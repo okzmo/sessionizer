@@ -141,8 +141,12 @@ func main() {
 		os.Exit(1)
 	}
 
-	if m, ok := finalModel.(model); ok && m.choice != "" {
-		AttachOrCreateSession(m.choice)
+	if m, ok := finalModel.(model); ok {
+		if m.choice != "" {
+			AttachOrCreateSession(m.choice)
+		} else {
+			os.Exit(10)
+		}
 	}
 }
 
